@@ -4,8 +4,8 @@
 @rem call vrunner compile --src unload/cf --out build/1cv8.cf %*
 
 echo Запуск сборки конфигурации из исходников в текущую базу данных
-call vrunner compile --src unload/cf --out build/1cv8.cf --ibconnection /F./build/ib --settings tools/vrunner.json
-call vrunner merge -s ./build/1Cv8.cf --merge-settings tools/MergeSettingsКонфигурация-cf-to-empty.xml --ibconnection /F./build/ib --language ru --settings tools/vrunner.json
+@rem call vrunner compile --src unload/cf --out build/1cv8.cf --ibconnection /F./build/ib --settings tools/vrunner.json
+@rem call vrunner merge -s ./build/1Cv8.cf --merge-settings tools/MergeSettingsКонфигурация-cf-to-empty.xml --ibconnection /F./build/ib --language ru --settings tools/vrunner.json
 call vrunner updatedb --settings tools/vrunner.json
 
 @rem обновление конфигурации основной разработческой ИБ из хранилища. для включения раскомментируйте код ниже

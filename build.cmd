@@ -1,7 +1,7 @@
 @chcp 65001
 
 @rem формирование файла конфигурации. для включения раскомментируйте код ниже
-rem call vrunner compile --src unload/cf --out build/1cv8.cf %*
+@rem call vrunner compile --src unload/cf --out build/1cv8.cf %*
 
 echo Запуск сборки конфигурации из исходников в текущую базу данных
 call vrunner compile --src unload/cf --out build/1cv8.cf --ibconnection /F./build/ib --settings tools/vrunner.json

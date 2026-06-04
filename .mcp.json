@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "1c-platform": {
+      "command": "java",
+      "args": [
+        "-Dfile.encoding=UTF-8",
+        "-jar",
+        "C:\\dll\\mcp-bsl-context-0.3.1.jar",
+        "--platform-path",
+        "C:\\Program Files\\1cv8\\8.3.27.1786\\bin\\"
+      ],
+      "env": {}
+    },
+    "1c-metadata": {
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-NoProfile",
+        "-WindowStyle",
+        "Hidden",
+        "-File",
+        "C:\\dll\\1C_MCP_metadata\\mcp-1c-powershell.ps1",
+        "-BaseUrl",
+        "http://192.168.54.1/MercuryN2/hs/mcpmetadata"
+      ]
+    },
+    "yaxunit-runner": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "C:\\1C\\AI\\yaxunit\\mcp-yaxunit-runner-0.2.0.jar"
+      ],
+      "env": {
+        "LOGGING_LEVEL_ROOT": "DEBUG",
+        "SPRING_CONFIG_IMPORT": "file:C:/1C/AI/yaxunit/project-config.yml"
+      },
+      "transport": "stdio"
+    }
+  }
+}

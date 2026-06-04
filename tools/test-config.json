@@ -1,0 +1,22 @@
+{
+    "reportPath": "build/reports/junit/yaxunit-report.xml",
+    "reportFormat": "jUnit",
+    "closeAfterTests": true,
+    "showReport": false,
+    "logging": {
+        "file": "build/logs/yaxunit-tests.log",
+        "level": "debug",
+        "console": true
+    },
+    "exitCode": "build/yaxunit-exit-code.txt",
+    "projectPath": "",
+    "ДымовыеТесты": false,
+    "rpc": {
+      "port": 0,
+      "enable": false,
+      "key": "",
+      "transport": "ws"
+    },
+    "ПодключатьВнешниеКомпоненты": true
+
+}

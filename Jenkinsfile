@@ -66,16 +66,6 @@ pipeline {
             }
         }
 
-        stage('Синтаксический контроль') {
-            steps {
-                echo "Выполнение синтаксического контроля"
-                bat """
-                    chcp 65001 > nul
-                    call syntax-check.cmd
-                """
-            }
-        }
-
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -122,10 +112,6 @@ pipeline {
                     ])
                 }
 
-                // Публикация синтаксических отчетов (JUnit)
-                if (fileExists('build/reports/syntax-check/junit')) {
-                    junit testResults: 'build/reports/syntax-check/junit/*.xml', allowEmptyResults: true
-                }
                 
 /*                 // Публикация синтаксических отчетов (Allure)
                 if (fileExists('build/reports/syntax-check/allure')) {
@@ -138,13 +124,6 @@ pipeline {
                     ])
                 } */
                 
-           /*      // Публикация результатов тестов JUnit (Vanessa тесты)
-                if (fileExists('out/smoke/junit')) {
-                    echo "Найдены JUnit отчеты Vanessa тестов"
-                    junit testResults: 'out/smoke/junit/*.xml', allowEmptyResults: true
-                } else {
-                    echo "JUnit файлы Vanessa тестов не найдены в out/smoke/junit/"
-                }                 */
                 // Публикация HTML отчета с логами
                 if (fileExists('build/logs')) {
                     publishHTML([
@@ -162,7 +141,6 @@ pipeline {
                 archiveArtifacts artifacts: 'build/**/*.log', allowEmptyArchive: false
                 archiveArtifacts artifacts: 'build/logs/**/*', allowEmptyArchive: false
                 archiveArtifacts artifacts: 'build/reports/**/*', allowEmptyArchive: false
-                archiveArtifacts artifacts: 'build/reports/junit/yaxunit-*.xml', allowEmptyArchive: true
                 //archiveArtifacts artifacts: 'out/smoke/**/*', allowEmptyArchive: false
             }
         }

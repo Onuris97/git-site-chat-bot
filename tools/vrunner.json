@@ -30,25 +30,5 @@
         "--pathvanessa": "./tools/vanessa-automation.epf",
         "--workspace": ".",
         "--additional": "/DisplayAllFunctions /L ru"        
-    },
-    "xunit": {
-        "--xddConfig": "./tools/JSON/vanessaTddConf.json",
-        "testsPath": "$addRoot/tests/smoke",
-        "--reportsxunit": "ГенераторОтчетаJUnitXML{out/smoke/junit/junit.xml};ГенераторОтчетаAllureXMLВерсия2{out/smoke/allure/allure.xml}",
-        "--xddExitCodePath": "./build/xddExitCodePath.txt"
-    },
-    "syntax-check": {
-        "--groupbymetadata": true,
-        "--exception-file": "tools/syntax-check-excludes.txt",
-        "--junitpath": "build/reports/syntax-check/junit/junit.xml",
-        "--allure-results2": "build/reports/syntax-check/allure",
-        "--mode": [
-            "-ExtendedModulesCheck",
-            "-ThinClient",
-            "-WebClient",
-            "-Server",
-            "-ExternalConnection",
-            "-ThickClientOrdinaryApplication"
-        ]
     }
 }

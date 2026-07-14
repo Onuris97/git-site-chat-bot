@@ -64,35 +64,7 @@ pipeline {
                     }
                 }
             }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    
-                    // Генерируем версию динамически на основе номера сборки Jenkins
-                    def projectVersion = "1.0.${env.BUILD_NUMBER}"
-                    
-                    // Получение пути к установленной автоматически утилите sonar-scanner.
-                    // Имя утилиты должно совпадать с заданным в настройках Global Tool Configuration
-                    def scannerHome = tool 'sonar-scanner'
-                    def sonarCommand = "${scannerHome}\\bin\\sonar-scanner.bat"
-                    
-                    // Получение данных авторизации к серверу SonarQube.
-                    // Имя сервера должно совпадать с заданным в настройках System Configuration
-                    withSonarQubeEnv('SONARQUBE_ENV') {
-                        bat """
-                            chcp 65001 > nul
-                            "${sonarCommand}" \
-                            -Dsonar.projectVersion=${projectVersion} \
-                            -Dsonar.projectKey=${env.SONAR_PROJECT_KEY} \
-                            -Dsonar.host.url=%SONAR_HOST_URL% \
-                            -Dsonar.token=%SONAR_AUTH_TOKEN%                             
-                        """
-                    }
-                }
-            }
-        }                
+        }               
     }
     
     post {

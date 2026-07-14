@@ -70,10 +70,8 @@ pipeline {
             steps {
                 script {
                     
-                    // Чтение файла Configuration.xml в переменную
-                    def configurationText = readFile encoding:'UTF-8', file:'unload/cf/Configuration.xml'
-                    // Получение значения тега Version
-                    def configurationVersion = (configurationText =~ /<Version>(.*)<\/Version>/)[0][1]
+                    // Генерируем версию динамически на основе номера сборки Jenkins
+                    def projectVersion = "1.0.${env.BUILD_NUMBER}"
                     
                     // Получение пути к установленной автоматически утилите sonar-scanner.
                     // Имя утилиты должно совпадать с заданным в настройках Global Tool Configuration
@@ -86,7 +84,7 @@ pipeline {
                         bat """
                             chcp 65001 > nul
                             "${sonarCommand}" \
-                            -Dsonar.projectVersion=${configurationVersion} \
+                            -Dsonar.projectVersion=${projectVersion} \
                             -Dsonar.projectKey=${env.SONAR_PROJECT_KEY} \
                             -Dsonar.host.url=%SONAR_HOST_URL% \
                             -Dsonar.token=%SONAR_AUTH_TOKEN%                             

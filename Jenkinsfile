@@ -122,7 +122,7 @@ pipeline {
             script {
                 // Отправка email при ошибке
                 if (env.CHANGE_ID == null) { // только для основной ветки
-                    mail to: 'fa@kb99.pro',
+                    mail to: 'fa@kb99.pro, markov@kb99.pro',
                          subject: "Jenkins Build Failed: ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
                          body: """Сборка завершилась с ошибкой.
                          

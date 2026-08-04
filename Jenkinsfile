@@ -60,7 +60,7 @@ pipeline {
                     } catch (Exception e) {
                         echo "BDD тесты завершились с ошибками: ${e.getMessage()}"
                         
-                        currentBuild.result = 'UNSTABLE'
+                        currentBuild.result = 'FAILURE'
                     }
                 }
             }
